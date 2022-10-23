@@ -6,12 +6,10 @@ import com.training.conferences.service.dto.ConferenceDto;
 
 import java.util.List;
 
-
 public interface ConferencesService {
-    long addConference(CreateNewConferenceDto conference);
+  long addConference(CreateNewConferenceDto conference);
 
-    List<ConferenceDto> getAllConferences();
+  List<ConferenceDto> getAllConferences();
 
-    long updateConference(Long conferencesId, UpdateConferenceDto conferencesDto);
-
+  long updateConference(Long conferencesId, UpdateConferenceDto conferencesDto);
 }

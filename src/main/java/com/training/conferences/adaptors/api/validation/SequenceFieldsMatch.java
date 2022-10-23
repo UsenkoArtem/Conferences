@@ -1,6 +1,5 @@
 package com.training.conferences.adaptors.api.validation;
 
-
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.Documented;
@@ -16,14 +15,13 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = DateSequenceValidator.class)
 @Documented
 public @interface SequenceFieldsMatch {
-    String message() default "{constraints.fieldmatch}";
+  String message() default "{constraints.fieldmatch}";
 
-    Class<?>[] groups() default {};
+  Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+  Class<? extends Payload>[] payload() default {};
 
-    String first();
+  String first();
 
-    String second();
-
+  String second();
 }

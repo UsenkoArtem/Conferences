@@ -14,24 +14,23 @@ import java.util.Map;
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
-    @ExceptionHandler({MethodArgumentNotValidException.class})
-    public ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
-        Map<String, Object> body = new HashMap<>();
-        body.put("message", ex.getAllErrors().stream().findFirst().get().getDefaultMessage());
-        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
-    }
+  @ExceptionHandler({MethodArgumentNotValidException.class})
+  public ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
+    Map<String, Object> body = new HashMap<>();
+    body.put("message", ex.getAllErrors().stream().findFirst().get().getDefaultMessage());
+    return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+  }
 
-    @ExceptionHandler({ConferenceException.class})
-    public ResponseEntity<Object> handleConferenceException(ConferenceException ex) {
-        Map<String, Object> body = new HashMap<>();
+  @ExceptionHandler({ConferenceException.class})
+  public ResponseEntity<Object> handleConferenceException(ConferenceException ex) {
+    Map<String, Object> body = new HashMap<>();
 
-        var statusCode = HttpStatus.BAD_REQUEST;
+    var statusCode = HttpStatus.BAD_REQUEST;
 
-        if (ex instanceof UniqueConferenceNameException)
-            statusCode = HttpStatus.CONFLICT;
+    if (ex instanceof UniqueConferenceNameException) statusCode = HttpStatus.CONFLICT;
 
-        body.put("message", ex.getMessage());
+    body.put("message", ex.getMessage());
 
-        return new ResponseEntity<>(body, statusCode);
-    }
+    return new ResponseEntity<>(body, statusCode);
+  }
 }

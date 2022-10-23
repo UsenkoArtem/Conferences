@@ -10,18 +10,11 @@ import javax.validation.constraints.NotBlank;
 @Data
 @RequiredArgsConstructor
 public class CreateNewTalkDto {
-    @NotBlank
-    @NonNull
-    private String Name;
+  @NotBlank @NonNull private String Name;
 
-    @NotBlank
-    @NonNull
-    private String Description;
+  @NotBlank @NonNull private String Description;
 
-    @NotBlank
-    @NonNull
-    private String SpeakerName;
+  @NotBlank @NonNull private String SpeakerName;
 
-    @NonNull
-    private ReportType ReportType;
+  @NonNull private ReportType ReportType;
 }

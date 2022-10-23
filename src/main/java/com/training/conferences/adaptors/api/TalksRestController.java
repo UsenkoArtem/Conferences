@@ -13,19 +13,23 @@ import java.util.List;
 @Tag(name = "talks")
 @RestController
 @Validated
-@RequestMapping(path = "/conferences", produces = {"application/json"})
+@RequestMapping(
+    path = "/conferences",
+    produces = {"application/json"})
 @RequiredArgsConstructor
 public class TalksRestController {
 
-    private final TalksService talksService;
+  private final TalksService talksService;
 
-    @PostMapping("{conference_id}/talks")
-    long addNewTalk(@Validated @RequestBody CreateNewTalkDto createNewTalkDto, @PathVariable("conference_id") Long conferencesId) {
-        return talksService.addTalkToConference(conferencesId, createNewTalkDto);
-    }
+  @PostMapping("{conference_id}/talks")
+  long addNewTalk(
+      @RequestBody CreateNewTalkDto createNewTalkDto,
+      @PathVariable("conference_id") Long conferencesId) {
+    return talksService.addTalkToConference(conferencesId, createNewTalkDto);
+  }
 
-    @GetMapping("{conference_id}/talks")
-    List<TalkDto> getAllConferenceTalks(@PathVariable("conference_id") Long conferencesId) {
-        return talksService.getAllConferenceTalks(conferencesId);
-    }
+  @GetMapping("{conference_id}/talks")
+  List<TalkDto> getAllConferenceTalks(@PathVariable("conference_id") Long conferencesId) {
+    return talksService.getAllConferenceTalks(conferencesId);
+  }
 }

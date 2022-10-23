@@ -10,8 +10,14 @@ import java.util.Optional;
 
 public interface ConferenceDao extends JpaRepository<ConferenceEntity, Long> {
 
-    @NonNull Optional<ConferenceEntity> findById(@NonNull Long id);
+  @NonNull
+  Optional<ConferenceEntity> findById(@NonNull Long id);
 
-    @Query(nativeQuery = true, value = "SELECT c.name FROM conference c WHERE (c.start_date >= ?1 AND c.start_date <= ?2) OR (c.end_date >= ?1 AND c.end_date <= ?2)")
-    Optional<String> findOverlap(LocalDate from, LocalDate to);
+  @Query(
+      nativeQuery = true,
+      value =
+          "SELECT * FROM conference c WHERE (c.start_date >= :from"
+              + " AND c.start_date <= :to) OR (c.end_date >= :from AND c"
+              + ".end_date <= :to)")
+  Optional<ConferenceEntity> findOverlap(LocalDate from, LocalDate to);
 }

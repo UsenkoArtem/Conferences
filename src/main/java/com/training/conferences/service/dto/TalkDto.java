@@ -7,9 +7,9 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class TalkDto {
-    private Long id;
-    private String TalkName;
-    private String SpeakerName;
-    private String Description;
-    private ReportType reportType;
+  private Long id;
+  private String TalkName;
+  private String SpeakerName;
+  private String Description;
+  private ReportType reportType;
 }

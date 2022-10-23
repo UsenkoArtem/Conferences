@@ -14,25 +14,28 @@ import java.util.List;
 @Tag(name = "conferences")
 @RestController
 @Validated
-@RequestMapping(path = "/conferences", produces = {"application/json"})
+@RequestMapping(
+    path = "/conferences",
+    produces = {"application/json"})
 @RequiredArgsConstructor
 public class ConferencesRestController {
 
-    private final ConferencesService conferencesService;
+  private final ConferencesService conferencesService;
 
-    @PostMapping
-    long createConference(@Validated @RequestBody CreateNewConferenceDto conferencesDto) {
-        return conferencesService.addConference(conferencesDto);
-    }
+  @PostMapping
+  long createConference(@RequestBody CreateNewConferenceDto conferencesDto) {
+    return conferencesService.addConference(conferencesDto);
+  }
 
-    @GetMapping
-    List<ConferenceDto> getAllConference() {
-        return conferencesService.getAllConferences();
-    }
+  @GetMapping
+  List<ConferenceDto> getAllConference() {
+    return conferencesService.getAllConferences();
+  }
 
-    @PutMapping("{conference_id}")
-    long updateConference(@Validated @RequestBody UpdateConferenceDto conferencesDto, @PathVariable("conference_id") Long conferencesId) {
-        return conferencesService.updateConference(conferencesId, conferencesDto);
-    }
-
+  @PutMapping("{conference_id}")
+  long updateConference(
+      @RequestBody UpdateConferenceDto updateConferenceDto,
+      @PathVariable("conference_id") Long conferencesId) {
+    return conferencesService.updateConference(conferencesId, updateConferenceDto);
+  }
 }

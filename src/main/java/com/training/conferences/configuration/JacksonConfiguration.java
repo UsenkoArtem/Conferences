@@ -11,13 +11,13 @@ import java.time.format.DateTimeFormatter;
 @Configuration
 public class JacksonConfiguration {
 
-    @Bean
-    public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer() {
+  @Bean
+  public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer() {
 
-        return builder -> {
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            builder.deserializers(new LocalDateDeserializer(dateFormatter));
-            builder.serializers(new LocalDateSerializer(dateFormatter));
-        };
-    }
+    return builder -> {
+      DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+      builder.deserializers(new LocalDateDeserializer(dateFormatter));
+      builder.serializers(new LocalDateSerializer(dateFormatter));
+    };
+  }
 }
